@@ -225,7 +225,7 @@ Reply with 'positive' (1), 'neutral' (0) or 'negative' (-1)."""
 
         return response.output_parsed["value"] # 1 for positive, 0 for neutral, -1 for negative
 
-def generate_relationships(self, platform_users: list) -> None:
+def generate_relationships(self, platform: Platform, platform_users: list) -> None:
         """
         Generate relationships with other users on the platform.
         """
@@ -234,10 +234,10 @@ def generate_relationships(self, platform_users: list) -> None:
             if other_agent.identifier == self.identifier:
                 continue
             
-            if Platform.has_link(self.identifier, other_agent.identifier):
+            if platform.has_link(self.identifier, other_agent.identifier):
                 sentiment = 1
             else:
-                sentiment = self.triad_determination(other_agent, Platform.get_posts_of_user(other_agent.identifier), use_bio=True,
+                sentiment = self.triad_determination(other_agent, platform.get_posts_of_user(other_agent.identifier), use_bio=True,
                             use_follower_count=False)
             
             self.relationships[other_agent.identifier] = sentiment
