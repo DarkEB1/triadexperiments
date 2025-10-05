@@ -189,10 +189,12 @@ class Platform():
         """
         Generate JSON object for all users on the platform.
         """
+        results = []
         for user in self.users:
             user.generate_relationships(platform=self, platform_users=self.users)
-            users = user.json(include_persona=True)
-        return users
+            results.append(user.json(include_persona=True))
+        return results
+
 
     def generate_log(self):
         """
