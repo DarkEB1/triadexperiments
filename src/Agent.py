@@ -6,6 +6,8 @@ from pydantic import BaseModel
 from openai import OpenAI
 from openai.types.chat import ParsedChoice
 
+from Platform import Platform
+
 class Action(BaseModel):
     option: int
     content: str
@@ -26,6 +28,7 @@ class Agent():
 
         self.identifier = 0
         self.followers = 0
+        self.relationships = {} # key: user_id, value: sentiment (1, 0, -1)
 
         self.used_tokens_input = 0
         self.used_tokens_output = 0
@@ -141,7 +144,7 @@ class Agent():
         
         return response.choices[0]
     
-    def link_with_user(self, other_agent: 'Agent', post_content: str, other_agent_posts: list, use_bio: bool = False,
+    def link_with_user(self, other_agent: 'Agent', post_content: str, other_agent_posts: list, use_bio: bool = True,
                        use_follower_count: bool = True) -> str:
         """
         Supply the bio of another agent and let the user decide if they want to follow them.
@@ -175,7 +178,71 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
 
         return True if response.choice.lower() == 'yes' else False, response.explanation
     
-    def perform_action(self, news_data: list, timeline: list) -> Action:
+def triad_determination(self, other_agent: 'Agent', other_agent_posts: list, use_bio: bool = True,
+                       use_follower_count: bool = False) -> int:
+        """
+        Supply the bio of another agent and let the user decide sentiment.
+        """
+        response_format = {
+    "type": "json_schema",
+    "json_schema": {
+        "name": "classification",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "integer",
+                    "enum": [-1, 0, 1]
+                }
+            },
+            "required": ["value"],
+            "additionalProperties": False
+        }
+    }
+}
+        msg = f""" You view another user's profile.
+User ID: {other_agent.identifier}
+"""
+        
+        if use_follower_count:
+            msg += f"Followers: {other_agent.followers}\n"
+
+        if use_bio:
+            msg += f"""Bio: {other_agent.persona['biography']}
+"""
+        
+        msg += """\nYou also see that the user has recently posted or reposted the following messages:\n\n"""
+        
+        for post in other_agent_posts[:5]:
+
+            msg += str(post['post_content'])
+            msg += "\n\n"
+        
+        msg += """Based on your beliefs, interests and personality, what is your sentiment towards this user?
+Reply with 'positive' (1), 'neutral' (0) or 'negative' (-1)."""
+
+        response = self.get_response(msg, response_format)
+
+        return response.output_parsed["value"] # 1 for positive, 0 for neutral, -1 for negative
+
+def generate_relationships(self, platform_users: list) -> None:
+        """
+        Generate relationships with other users on the platform.
+        """
+
+        for other_agent in platform_users:
+            if other_agent.identifier == self.identifier:
+                continue
+            
+            if Platform.has_link(self.identifier, other_agent.identifier):
+                sentiment = 1
+            else:
+                sentiment = self.triad_determination(other_agent, Platform.get_posts_of_user(other_agent.identifier), use_bio=True,
+                            use_follower_count=False)
+            
+            self.relationships[other_agent.identifier] = sentiment
+
+def perform_action(self, news_data: list, timeline: list) -> Action:
         """
         The user is presented with a set of options to choose from based on their persona.
         - Repost a post from the timeline
