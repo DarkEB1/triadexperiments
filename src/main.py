@@ -125,11 +125,11 @@ def run_simulation(simulation_size = 500, simulation_steps = 10000,
 if __name__ == "__main__":
 
     # Run five simulations
-    for i in range(1, 6):
+    for i in range(1, 2):
 
         print(f"Running simulation {i}...")
 
-        run_simulation(simulation_size=500, simulation_steps=10000, 
+        run_simulation(simulation_size=7, simulation_steps=2, 
                        user_link_strategy="on_repost_bio", 
                        timeline_select_strategy="other_partisan",
                        show_info=True, run_nr=i)
