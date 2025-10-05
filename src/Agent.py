@@ -1,3 +1,4 @@
+from __future__ import annotations
 import json
 import random
 
@@ -5,8 +6,11 @@ from pydantic import BaseModel
 
 from openai import OpenAI
 from openai.types.chat import ParsedChoice
+from typing import TYPE_CHECKING
 
-from Platform import Platform
+
+if TYPE_CHECKING:
+    from Platform import Platform
 
 class Action(BaseModel):
     option: int
@@ -33,6 +37,8 @@ class Agent():
         self.used_tokens_input = 0
         self.used_tokens_output = 0
         self.used_tokens_cached = 0
+
+        self._platform: "Platform | None" = None
 
     def __repr__(self):
         return f"User {self.identifier} with {self.followers} followers"
@@ -229,7 +235,7 @@ def generate_relationships(self, platform: Platform, platform_users: list) -> No
         """
         Generate relationships with other users on the platform.
         """
-
+        self._platform = platform
         for other_agent in platform_users:
             if other_agent.identifier == self.identifier:
                 continue
