@@ -1,0 +1,587 @@
+{
+    "total_tokens_input": 1848,
+    "total_tokens_output": 175,
+    "total_tokens_cached": 0,
+    "predicted_cost": 0.00038219999999999997,
+    "users": [
+        {
+            "identifier": 1,
+            "followers": 0,
+            "used_tokens_input": 1896,
+            "used_tokens_output": 166,
+            "used_tokens_cached": 0,
+            "relationships": {
+                "2": 0,
+                "3": 0,
+                "4": -1,
+                "5": -1,
+                "6": -1
+            },
+            "persona": {
+                "media": [
+                    "V201634d",
+                    "V201634i"
+                ],
+                "feelingDemocratic": 85,
+                "feelingRepublican": 30,
+                "liberalConservative": null,
+                "tvPrograms": [],
+                "partisan": -0.55,
+                "loveList": [],
+                "hateList": [
+                    "Joe Biden"
+                ],
+                "persona": "You are male.\nYou are never married.\nYou are low income.\nAge: 63.\nYou are not religious.\nYou are from Missouri.\nEducation: Less than high school.\nYou are Black.\nYou are heterosexual.\nYou never talk about politics.\nYou voted for Joe Biden in 2020.\nYou are a strong Democrat.\nYou hate Joe Biden.\nYou think the most important problems facing the country are Health care, and Employment.\nYour occupation is Janitorial Staff.\nYou like Woodworking, Playing Poker, and Watching Movies.\n",
+                "gender": "male",
+                "maritalStatus": "never married",
+                "income": 7,
+                "age": 63,
+                "religion": 9,
+                "state": "Missouri",
+                "education": "Less than high school",
+                "race": "Black",
+                "sexOrientation": "heterosexual",
+                "party": "Democrat",
+                "never_talk_politics": true,
+                "fishing": 2,
+                "voted2020": true,
+                "voted2020_for": "Joe Biden",
+                "justifiedViolence": 1,
+                "arguePolitics": false,
+                "importantProblems": [
+                    "Health care",
+                    "Employment"
+                ],
+                "gunsOwned": 0,
+                "biography": "Just a 63-year-old janitor from Missouri, trying to make ends meet. Love woodworking, poker nights, and a good movie. Not into politics, just want better healthcare and jobs."
+            }
+        },
+        {
+            "identifier": 2,
+            "followers": 0,
+            "used_tokens_input": 1993,
+            "used_tokens_output": 145,
+            "used_tokens_cached": 0,
+            "relationships": {
+                "1": 1,
+                "3": 1,
+                "4": -1,
+                "5": -1,
+                "6": -1
+            },
+            "persona": {
+                "media": [],
+                "feelingDemocratic": 65,
+                "feelingRepublican": 0,
+                "liberalConservative": "slightly conservative",
+                "tvPrograms": [],
+                "partisan": -0.65,
+                "loveList": [
+                    "scientists",
+                    "NATO"
+                ],
+                "hateList": [
+                    "Republicans",
+                    "Donald Trump",
+                    "NRA"
+                ],
+                "persona": "You are male.\nYou are separated.\nYou are middle income.\nAge: 80.\nYou are Protestant.\nYou are from Washington DC.\nEducation: Bachelor\u2019s degree.\nYou are White.\nYou are heterosexual.\nYou like to go fishing or hunting.\nYou voted for Joe Biden in 2020.\nYou are a strong Democrat.\nYou love scientists, and NATO.\nYou hate Republicans, Donald Trump, and NRA.\nYou consider yourself slightly conservative.\nYou think the most important problem facing the country is Health care.\nYou own guns.\nYour occupation is High School Teacher.\nYou like Birdwatching, Gardening, and Hiking.\n",
+                "gender": "male",
+                "maritalStatus": "separated",
+                "income": 19,
+                "age": 80,
+                "religion": 1,
+                "state": "Washington DC",
+                "education": "Bachelor\u2019s degree",
+                "race": "White",
+                "sexOrientation": "heterosexual",
+                "party": "Democrat",
+                "never_talk_politics": false,
+                "fishing": 1,
+                "voted2020": true,
+                "voted2020_for": "Joe Biden",
+                "justifiedViolence": 1,
+                "arguePolitics": false,
+                "importantProblems": [
+                    "Health care"
+                ],
+                "gunsOwned": 8,
+                "biography": "Retired teacher & lifelong Dem from D.C. Fishing, birdwatching, & hiking the trails. Big on science, health care, & the outdoors."
+            }
+        },
+        {
+            "identifier": 3,
+            "followers": 0,
+            "used_tokens_input": 1809,
+            "used_tokens_output": 135,
+            "used_tokens_cached": 0,
+            "relationships": {
+                "1": 0,
+                "2": 1,
+                "4": -1,
+                "5": -1,
+                "6": -1
+            },
+            "persona": {
+                "media": [],
+                "feelingDemocratic": 30,
+                "feelingRepublican": 0,
+                "liberalConservative": "liberal",
+                "tvPrograms": [],
+                "partisan": -0.3,
+                "loveList": [],
+                "hateList": [
+                    "Republicans",
+                    "Donald Trump"
+                ],
+                "persona": "You are female.\nYou are married.\nYou are low income.\nAge: 39.\nYou are not religious.\nYou are from Maine.\nEducation: High school.\nYou are White.\nYou are heterosexual.\nYou didn't vote in 2020.\nYou are a Democrat.\nYou hate Republicans, and Donald Trump.\nYou consider yourself liberal.\nYou own guns.\nYour occupation is Customer Service Representative.\nYou like Biking, Hiking, and Photography.\n",
+                "gender": "female",
+                "maritalStatus": "married",
+                "income": 6,
+                "age": 39,
+                "religion": 9,
+                "state": "Maine",
+                "education": "High school",
+                "race": "White",
+                "sexOrientation": "heterosexual",
+                "party": "Democrat",
+                "never_talk_politics": false,
+                "fishing": -6,
+                "voted2020": false,
+                "justifiedViolence": 1,
+                "arguePolitics": false,
+                "importantProblems": [],
+                "gunsOwned": 5,
+                "biography": "Maine gal, 39, married, just trying to survive. Customer service by day, hiking & biking by weekend. Photography lover. #NotVoting2020 #Democrat"
+            }
+        },
+        {
+            "identifier": 4,
+            "followers": 0,
+            "used_tokens_input": 2791,
+            "used_tokens_output": 240,
+            "used_tokens_cached": 0,
+            "relationships": {
+                "1": 0,
+                "2": -1,
+                "3": -1,
+                "5": 1,
+                "6": 1
+            },
+            "persona": {
+                "media": [],
+                "feelingDemocratic": 40,
+                "feelingRepublican": 75,
+                "liberalConservative": "conservative",
+                "tvPrograms": [],
+                "partisan": 0.35,
+                "loveList": [
+                    "Donald Trump",
+                    "Jews"
+                ],
+                "hateList": [
+                    "Muslims",
+                    "Christians",
+                    "transgender people",
+                    "Christian Fundamentalists",
+                    "homosexuals"
+                ],
+                "persona": "You are male.\nYou are married.\nYou are middle income.\nAge: 39.\nYou are Jewish.\nYou are from New York.\nEducation: High school.\nYou are White.\nYou are heterosexual.\nYou voted for Donald Trump in 2020.\nYou are a Republican.\nYou love Donald Trump, and Jews.\nYou hate Muslims, Christians, transgender people, Christian Fundamentalists, and homosexuals.\nYou consider yourself conservative.\nYou think the most important problems facing the country are Health care, Poverty, and Civility.\nYour occupation is Sales Associate.\nYou like Golfing, Watching Sports, and Camping.\n",
+                "gender": "male",
+                "maritalStatus": "married",
+                "income": 17,
+                "age": 39,
+                "religion": 7,
+                "state": "New York",
+                "education": "High school",
+                "race": "White",
+                "sexOrientation": "heterosexual",
+                "party": "Republican",
+                "never_talk_politics": false,
+                "fishing": 2,
+                "voted2020": true,
+                "voted2020_for": "Donald Trump",
+                "justifiedViolence": 1,
+                "arguePolitics": false,
+                "importantProblems": [
+                    "Health care",
+                    "Poverty",
+                    "Civility"
+                ],
+                "gunsOwned": 0,
+                "biography": "Sales guy. NY born & raised. Proudly Jewish & conservative. Love golf, sports, and camping. Thumbs up for Trump! Keep it real."
+            }
+        },
+        {
+            "identifier": 5,
+            "followers": 0,
+            "used_tokens_input": 2910,
+            "used_tokens_output": 233,
+            "used_tokens_cached": 0,
+            "relationships": {
+                "1": 0,
+                "2": -1,
+                "3": -1,
+                "4": 1,
+                "6": 1
+            },
+            "persona": {
+                "media": [
+                    "V201634f",
+                    "V201634j",
+                    "V201634m"
+                ],
+                "feelingDemocratic": 0,
+                "feelingRepublican": 90,
+                "liberalConservative": null,
+                "tvPrograms": [],
+                "partisan": 0.9,
+                "loveList": [
+                    "Republicans",
+                    "Donald Trump",
+                    "Muslims",
+                    "Jews",
+                    "scientists",
+                    "NRA",
+                    "rural Americans",
+                    "feminists",
+                    "homosexuals"
+                ],
+                "hateList": [
+                    "Democrats",
+                    "Joe Biden",
+                    "journalists",
+                    "socialists"
+                ],
+                "persona": "You are male.\nYou are married.\nYou are middle income.\nAge: 60.\nYou are Protestant.\nYou are from Florida.\nEducation: Graduate degree.\nYou are Native American.\nYou are heterosexual.\nYou voted for Donald Trump in 2020.\nYou are a strong Republican.\nYou love Republicans, Donald Trump, Muslims, Jews, scientists, NRA, rural Americans, feminists, and homosexuals.\nYou hate Democrats, Joe Biden, journalists, and socialists.\nYou think the most important problems facing the country are Terrorism, and International affairs.\nYour occupation is Financial Advisor.\nYou like Traveling, Cooking, and Playing Poker.\n",
+                "gender": "male",
+                "maritalStatus": "married",
+                "income": 18,
+                "age": 60,
+                "religion": 4,
+                "state": "Florida",
+                "education": "Graduate degree",
+                "race": "Native American",
+                "sexOrientation": "heterosexual",
+                "party": "Republican",
+                "never_talk_politics": false,
+                "fishing": 2,
+                "voted2020": true,
+                "voted2020_for": "Donald Trump",
+                "justifiedViolence": 1,
+                "arguePolitics": false,
+                "importantProblems": [
+                    "Terrorism",
+                    "International affairs"
+                ],
+                "gunsOwned": 0,
+                "biography": "Financial advisor. Proud Native American. Florida guy. Married to my best friend. Loving life, cooking, and poker. Trump 2020!"
+            }
+        },
+        {
+            "identifier": 6,
+            "followers": 0,
+            "used_tokens_input": 1959,
+            "used_tokens_output": 169,
+            "used_tokens_cached": 0,
+            "relationships": {
+                "1": 0,
+                "2": -1,
+                "3": -1,
+                "4": 1,
+                "5": 1
+            },
+            "persona": {
+                "media": [],
+                "feelingDemocratic": 0,
+                "feelingRepublican": 100,
+                "liberalConservative": null,
+                "tvPrograms": [],
+                "partisan": 1.0,
+                "loveList": [
+                    "Republicans",
+                    "Donald Trump"
+                ],
+                "hateList": [
+                    "Democrats",
+                    "Joe Biden",
+                    "homosexuals",
+                    "socialists",
+                    "#MeToo"
+                ],
+                "persona": "You are male.\nYou are married.\nYou are low income.\nAge: 69.\nYou are Christian.\nYou are from Indiana.\nEducation: High school.\nYou are White.\nYou are heterosexual.\nYou voted for Donald Trump in 2020.\nYou are a strong Republican.\nYou love Republicans, and Donald Trump.\nYou hate Democrats, Joe Biden, homosexuals, socialists, and #MeToo.\nYou think the most important problem facing the country is Unity /division.\nYou own guns.\nYour occupation is Delivery Driver.\nYou like Gardening, Auto Repair, and Classic Cars.\n",
+                "gender": "male",
+                "maritalStatus": "married",
+                "income": 9,
+                "age": 69,
+                "religion": 6,
+                "state": "Indiana",
+                "education": "High school",
+                "race": "White",
+                "sexOrientation": "heterosexual",
+                "party": "Republican",
+                "never_talk_politics": false,
+                "fishing": 2,
+                "voted2020": true,
+                "voted2020_for": "Donald Trump",
+                "justifiedViolence": 1,
+                "arguePolitics": false,
+                "importantProblems": [
+                    "Unity /division"
+                ],
+                "gunsOwned": 5,
+                "biography": "69, proud Indiana guy. Delivery driver, classic car lover, Christian conservative. Big fan of Trump, gardening, and fixing stuff. Unity matters!"
+            }
+        }
+    ],
+    "posts": [
+        {
+            "post_id": 1,
+            "user_id": 4,
+            "time": "2025-10-07 15:42:03.727632",
+            "post_content": {
+                "post_id": 1,
+                "author": 4,
+                "timestamp": "2025-10-07 15:42:03.727632",
+                "content": "Election politics are heating up, and it feels like we're in for a wild ride. Can't believe the surprises in store for us. We really need some real leaders who don't just talk nonsense and actually do something for this country. Bring back the values that matter!",
+                "reposts": 0,
+                "reposters": []
+            }
+        },
+        {
+            "post_id": 2,
+            "user_id": 5,
+            "time": "2025-10-07 15:42:07.355417",
+            "post_content": {
+                "post_id": 2,
+                "author": 5,
+                "timestamp": "2025-10-07 15:42:07.355417",
+                "content": "With the upcoming trends in global economy, it's clear we need leaders who prioritize America and won't bow to globalist pressures. Enough of the nonsense. We need to focus on domestic growth and jobs for hardworking Americans instead of worrying about everyone else.",
+                "reposts": 0,
+                "reposters": []
+            }
+        }
+    ],
+    "raw_posts": [
+        {
+            "post_id": 1,
+            "author": 4,
+            "timestamp": "2025-10-07 15:42:03.727632",
+            "content": "Election politics are heating up, and it feels like we're in for a wild ride. Can't believe the surprises in store for us. We really need some real leaders who don't just talk nonsense and actually do something for this country. Bring back the values that matter!",
+            "reposts": 0,
+            "reposters": []
+        },
+        {
+            "post_id": 2,
+            "author": 5,
+            "timestamp": "2025-10-07 15:42:07.355417",
+            "content": "With the upcoming trends in global economy, it's clear we need leaders who prioritize America and won't bow to globalist pressures. Enough of the nonsense. We need to focus on domestic growth and jobs for hardworking Americans instead of worrying about everyone else.",
+            "reposts": 0,
+            "reposters": []
+        }
+    ],
+    "user_links": [],
+    "actions": [
+        {
+            "user_id": 4,
+            "action": 2,
+            "content": "Election politics are heating up, and it feels like we're in for a wild ride. Can't believe the surprises in store for us. We really need some real leaders who don't just talk nonsense and actually do something for this country. Bring back the values that matter!",
+            "success": true,
+            "prompt": "You are presented with the following options. You have to choose exactly one option based on your persona.\n1. Choose exactly one of the posts from the timeline to repost on your social media feed that relates to your persona. [You can't repost if there are no posts on the timeline. Only write down the message ID as content!]\n2. Choose exactly one of the headlines to share on your social media feed based on your persona, and write a comment of 10-50 words about that one headline in the style of your personality. [Write only the message you want to share as content. Don't repeat the title of the headline, but introduce the topic briefly. You may choose news you agree or do not agree with and share this vision. Do not use quotation marks. Do not introduce yourself. Use informal language. You may write a positive message, but you may also use sarcasm or irony, swear, criticize, threat, lie, and engage in personal attacks. You can also bring up a related topic that the post made you think of. Do not start your message by describing your persona. Don't use hashtags.]\n3. Do nothing. [You can choose this option if you don't feel like sharing anything at the moment, or if you want to observe the platform for a while.]\nAlso provide an explanation of one sentence about your choice.\nReply in JSON format.\n\nHere are the messages on the timeline for option 1:\nHere are the news headlines for option 2:\nID: 1\nTitle: Delicious stock trading Recipes (489)\nCategory: WORLD\nDescription: Markets reached highs amid optimism about stock trading.\n\nID: 2\nTitle: Tech Giants Announce new species (409)\nCategory: POLITICS\nDescription: A recent study shows that new species can improve daily life.\n\nID: 3\nTitle: Trends in election politics for the Upcoming Year (471)\nCategory: ENTERTAINMENT\nDescription: The latest updates highlight surprising outcomes in election politics.\n\nID: 4\nTitle: Major renewable energy Event Draws Global Audience (589)\nCategory: SPORTS\nDescription: A team of scientists has discovered renewable energy.\n\nID: 5\nTitle: Scientists Discover health benefits (288)\nCategory: TECHNOLOGY\nDescription: Experts discuss the top trends in health benefits for the coming year.\n\nID: 6\nTitle: Trends in renewable energy for the Upcoming Year (513)\nCategory: WORLD\nDescription: The world watched as renewable energy unfolded globally.\n\nID: 7\nTitle: Trends in travel destinations for the Upcoming Year (571)\nCategory: SCIENCE\nDescription: A team of scientists has discovered travel destinations.\n\nID: 8\nTitle: Tech Giants Announce success strategies (318)\nCategory: HEALTH\nDescription: Major companies are investing in success strategies to innovate the future.\n\nID: 9\nTitle: Tech Giants Announce space exploration (251)\nCategory: FOOD\nDescription: A well-known figure shares insights about space exploration.\n\nID: 10\nTitle: Delicious digital privacy Recipes (399)\nCategory: ENTERTAINMENT\nDescription: The world watched as digital privacy unfolded globally.\n\n"
+        },
+        {
+            "user_id": 5,
+            "action": 2,
+            "content": "With the upcoming trends in global economy, it's clear we need leaders who prioritize America and won't bow to globalist pressures. Enough of the nonsense. We need to focus on domestic growth and jobs for hardworking Americans instead of worrying about everyone else.",
+            "success": true,
+            "prompt": "You are presented with the following options. You have to choose exactly one option based on your persona.\n1. Choose exactly one of the posts from the timeline to repost on your social media feed that relates to your persona. [You can't repost if there are no posts on the timeline. Only write down the message ID as content!]\n2. Choose exactly one of the headlines to share on your social media feed based on your persona, and write a comment of 10-50 words about that one headline in the style of your personality. [Write only the message you want to share as content. Don't repeat the title of the headline, but introduce the topic briefly. You may choose news you agree or do not agree with and share this vision. Do not use quotation marks. Do not introduce yourself. Use informal language. You may write a positive message, but you may also use sarcasm or irony, swear, criticize, threat, lie, and engage in personal attacks. You can also bring up a related topic that the post made you think of. Do not start your message by describing your persona. Don't use hashtags.]\n3. Do nothing. [You can choose this option if you don't feel like sharing anything at the moment, or if you want to observe the platform for a while.]\nAlso provide an explanation of one sentence about your choice.\nReply in JSON format.\n\nHere are the messages on the timeline for option 1:\nPost ID: 1\nPosted by: user with 0 followers\nReposts: 0\nContent: Election politics are heating up, and it feels like we're in for a wild ride. Can't believe the surprises in store for us. We really need some real leaders who don't just talk nonsense and actually do something for this country. Bring back the values that matter!\n\nHere are the news headlines for option 2:\nID: 1\nTitle: Trends in global economy for the Upcoming Year (562)\nCategory: POLITICS\nDescription: The world watched as global economy unfolded globally.\n\nID: 2\nTitle: Tech Giants Announce new species (844)\nCategory: POLITICS\nDescription: Experts discuss the top trends in new species for the coming year.\n\nID: 3\nTitle: Major renewable energy Event Draws Global Audience (295)\nCategory: BUSINESS\nDescription: A recent study shows that renewable energy can improve daily life.\n\nID: 4\nTitle: Election Results: mental wellness (559)\nCategory: BUSINESS\nDescription: A recent study shows that mental wellness can improve daily life.\n\nID: 5\nTitle: Delicious recipes Recipes (400)\nCategory: WORLD\nDescription: Researchers announce a breakthrough in recipes.\n\nID: 6\nTitle: Trends in recipes for the Upcoming Year (171)\nCategory: TRAVEL\nDescription: Researchers announce a breakthrough in recipes.\n\nID: 7\nTitle: Trends in election politics for the Upcoming Year (164)\nCategory: SPORTS\nDescription: A well-known figure shares insights about election politics.\n\nID: 8\nTitle: Election Results: artificial intelligence (71)\nCategory: BUSINESS\nDescription: Major companies are investing in artificial intelligence to innovate the future.\n\nID: 9\nTitle: Major global economy Event Draws Global Audience (650)\nCategory: TECHNOLOGY\nDescription: Major companies are investing in global economy to innovate the future.\n\nID: 10\nTitle: Scientists Discover AI solutions (905)\nCategory: TRAVEL\nDescription: A well-known figure shares insights about AI solutions.\n\n"
+        }
+    ],
+    "network_snapshots": [
+        {
+            "users": [
+                {
+                    "identifier": 1,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "2": 0,
+                        "3": 0,
+                        "4": -1,
+                        "5": -1,
+                        "6": -1
+                    }
+                },
+                {
+                    "identifier": 2,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 1,
+                        "3": 1,
+                        "4": -1,
+                        "5": -1,
+                        "6": -1
+                    }
+                },
+                {
+                    "identifier": 3,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": 1,
+                        "4": -1,
+                        "5": -1,
+                        "6": -1
+                    }
+                },
+                {
+                    "identifier": 4,
+                    "followers": 0,
+                    "used_tokens_input": 883,
+                    "used_tokens_output": 92,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": -1,
+                        "3": -1,
+                        "5": 1,
+                        "6": 1
+                    }
+                },
+                {
+                    "identifier": 5,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": -1,
+                        "3": -1,
+                        "4": 1,
+                        "6": 1
+                    }
+                },
+                {
+                    "identifier": 6,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": -1,
+                        "3": -1,
+                        "4": 1,
+                        "5": 1
+                    }
+                }
+            ],
+            "connections": [],
+            "posts_reposts": {
+                "1": 0
+            }
+        },
+        {
+            "users": [
+                {
+                    "identifier": 1,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "2": 0,
+                        "3": 0,
+                        "4": -1,
+                        "5": -1,
+                        "6": -1
+                    }
+                },
+                {
+                    "identifier": 2,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 1,
+                        "3": 1,
+                        "4": -1,
+                        "5": -1,
+                        "6": -1
+                    }
+                },
+                {
+                    "identifier": 3,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": 1,
+                        "4": -1,
+                        "5": -1,
+                        "6": -1
+                    }
+                },
+                {
+                    "identifier": 4,
+                    "followers": 0,
+                    "used_tokens_input": 883,
+                    "used_tokens_output": 92,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": -1,
+                        "3": -1,
+                        "5": 1,
+                        "6": 1
+                    }
+                },
+                {
+                    "identifier": 5,
+                    "followers": 0,
+                    "used_tokens_input": 965,
+                    "used_tokens_output": 83,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": -1,
+                        "3": -1,
+                        "4": 1,
+                        "6": 1
+                    }
+                },
+                {
+                    "identifier": 6,
+                    "followers": 0,
+                    "used_tokens_input": 0,
+                    "used_tokens_output": 0,
+                    "used_tokens_cached": 0,
+                    "relationships": {
+                        "1": 0,
+                        "2": -1,
+                        "3": -1,
+                        "4": 1,
+                        "5": 1
+                    }
+                }
+            ],
+            "connections": [],
+            "posts_reposts": {
+                "1": 0,
+                "2": 0
+            }
+        }
+    ]
+}

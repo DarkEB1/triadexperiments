@@ -2,7 +2,8 @@ from __future__ import annotations
 import json
 import random
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, constr
+from typing import Literal
 from openai import OpenAI
 from openai.types.chat import ParsedChoice
 from typing import TYPE_CHECKING
@@ -22,8 +23,8 @@ class BooleanAction(BaseModel):
     explanation: str
 
 class SignedAction(BaseModel):
-    value: int = Field(..., description="Must be -1, 0, or 1", enum=[-1, 0, 1])
-    explanation: str
+    value: Literal[-1, 0, 1]
+    explanation: constr(strip_whitespace=True, min_length=1)
 
 
 class Agent:
@@ -137,6 +138,14 @@ class Agent:
             response_format=response_format
         )
 
+        msg = response.choices[0].message
+        if getattr(msg, "parsed", None) is None:
+            # Hard fail with useful info for debugging
+            raise ValueError(
+                f"Structured parse failed. content={msg.content!r} "
+                f"refusal={getattr(msg, 'refusal', None)!r}"
+            )
+        
         # Keep track of the tokens used for cost analysis
         self.used_tokens_input += response.usage.prompt_tokens
         self.used_tokens_output += response.usage.completion_tokens
@@ -182,29 +191,32 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
         """
 
 
-        msg = f"""You view another user's profile.
-User ID: {other_agent.identifier}
-"""
+        msg = (
+            f"You view another user's profile.\n"
+            f"User ID: {other_agent.identifier}\n"
+        )
         if use_follower_count:
             msg += f"Followers: {other_agent.followers}\n"
-
         if use_bio:
-            msg += f"""Bio: {other_agent.persona['biography']}
-"""
+            msg += f"Bio: {other_agent.persona['biography']}\n"
 
-        msg += """\nYou also see that the user has recently posted or reposted the following messages:\n\n"""
-
+        msg += "\nRecent posts or reposts:\n\n"
         for post in other_agent_posts[:5]:
-            msg += str(post['post_content'])
-            msg += "\n\n"
+            msg += f"{post['post_content']}\n\n"
 
-        msg += """Based on your beliefs, interests and personality, what is your sentiment towards this user?
-Reply only with aan integer reflecting positive, negative or neutral like: -1, 0, or 1.Also provide a short explanation for your choice."""
+        msg += (
+            "Based on your beliefs, interests, and personality, decide your sentiment "
+            "towards this user.\n"
+            "Return a JSON object that matches the schema exactly. No extra text.\n"
+            "Fields:\n"
+            "- value: one of -1, 0, 1 (negative, neutral, positive)\n"
+            "- explanation: short string justification\n"
+        )
 
-        response = self.get_response(msg, SignedAction).message.parsed
-        # THIS SHIT RETURNS NONE
+        response1 = self.get_response(msg, SignedAction)
+        response: SignedAction = response1.message.parsed
         print(response)
-        return response.value
+        return int(response.value)
 
     def generate_relationships(self, platform: Platform, platform_users: list) -> None:
         """
