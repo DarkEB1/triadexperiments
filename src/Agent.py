@@ -210,7 +210,7 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
             "Return a JSON object that matches the schema exactly. No extra text.\n"
             "Fields:\n"
             "- value: one of -1, 0, 1 (negative, neutral, positive)\n"
-            "- explanation: short string justification\n"
+            "- explanation: 10 word justification\n"
         )
 
         response1 = self.get_response(msg, SignedAction)
