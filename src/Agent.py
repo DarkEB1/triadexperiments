@@ -24,8 +24,7 @@ class BooleanAction(BaseModel):
 
 class SignedAction(BaseModel):
     value: Literal[-1, 0, 1]
-    explanation: constr(strip_whitespace=True, min_length=1)
-
+    explanation: constr(strip_whitespace=True, min_length=1, max_length=200)
 
 class Agent:
 
@@ -111,7 +110,7 @@ class Agent:
             "used_tokens_input": self.used_tokens_input,
             "used_tokens_output": self.used_tokens_output,
             "used_tokens_cached": self.used_tokens_cached,
-            "relationships": self.relationships
+            "relationships": {str(k): v for k, v in self.relationships.items()}
         }
 
         if include_persona:
@@ -149,7 +148,42 @@ class Agent:
         # Keep track of the tokens used for cost analysis
         self.used_tokens_input += response.usage.prompt_tokens
         self.used_tokens_output += response.usage.completion_tokens
-        self.used_tokens_cached += response.usage.prompt_tokens_details.get("cached_tokens", 0)
+        details = getattr(response.usage, "prompt_tokens_details", None)
+        self.used_tokens_cached += (getattr(details, "cached_tokens", 0) or 0)
+
+
+
+        return response.choices[0]
+    
+    def get_link(self, message: str, response_format=None) -> ParsedChoice:
+        """
+        Get the response from the agent to the given message.
+        """
+        response = self.llm.beta.chat.completions.parse(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": self._generate_sys_msg()},
+                {"role": "user", "content": message}
+            ],
+            response_format=response_format,
+            max_tokens=1000
+
+        )
+
+        msg = response.choices[0].message
+        if getattr(msg, "parsed", None) is None:
+            # Hard fail with useful info for debugging
+            raise ValueError(
+                f"Structured parse failed. content={msg.content!r} "
+                f"refusal={getattr(msg, 'refusal', None)!r}"
+            )
+        
+        # Keep track of the tokens used for cost analysis
+        self.used_tokens_input += response.usage.prompt_tokens
+        self.used_tokens_output += response.usage.completion_tokens
+        details = getattr(response.usage, "prompt_tokens_details", None)
+        self.used_tokens_cached += (getattr(details, "cached_tokens", 0) or 0)
+
 
 
         return response.choices[0]
@@ -206,14 +240,14 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
 
         msg += (
             "Based on your beliefs, interests, and personality, decide your sentiment "
-            "towards this user.\n"
+            "towards this user (with consideration for how you have interacted with them on the network in the past).\n"
             "Return a JSON object that matches the schema exactly. No extra text.\n"
             "Fields:\n"
             "- value: one of -1, 0, 1 (negative, neutral, positive)\n"
-            "- explanation: 10 word justification\n"
+            "- explanation: <= 150 char justification\n"
         )
 
-        response1 = self.get_response(msg, SignedAction)
+        response1 = self.get_link(msg, SignedAction)
         response: SignedAction = response1.message.parsed
         print(response)
         return int(response.value)
