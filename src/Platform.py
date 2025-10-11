@@ -5,6 +5,8 @@ import random
 import requests
 import os 
 import numpy as np
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
 
 from openai import OpenAI
 
@@ -195,6 +197,53 @@ class Platform():
             results.append(user.json(include_persona=True))
         return results
 
+    def generate_users_json_parallel(self, max_workers: int | None = None):
+        """
+        Parallel version of generate_users_json.
+        Spawns threads to compute each user's relationships + JSON.
+        """
+        users = self.users  # snapshot references
+        platform_users = self.users  # read-only in this phase
+
+        # Good default for I/O-bound work; cap to avoid hammering the API
+        if max_workers is None:
+            max_workers = min(16, max(4, len(users)))
+
+        def compute_user(u: Agent):
+            # Optional: give each worker its own client to avoid any thread-safety doubts
+            if u.llm is None:
+                u.set_client(OpenAI())
+            u.generate_relationships(platform=self, platform_users=platform_users)
+            return u.json(include_persona=True)
+
+        results = []
+        errors = []
+
+        with ThreadPoolExecutor(max_workers=max_workers) as pool:
+            future_to_user = {pool.submit(compute_user, u): u.identifier for u in users}
+            for fut in as_completed(future_to_user):
+                uid = future_to_user[fut]
+                try:
+                    results.append(fut.result())
+                except Exception as e:
+                    # Keep type-stable output; record an error entry for this user
+                    errors.append((uid, e))
+                    # You can also create a placeholder shape if needed by downstream consumers:
+                    results.append({
+                        "identifier": uid,
+                        "followers": self.get_follower_count(uid),
+                        "used_tokens_input": 0,
+                        "used_tokens_output": 0,
+                        "used_tokens_cached": 0,
+                        "relationships": {},
+                        "error": str(e),
+                    })
+
+        # Optional: log/raise if you want to fail hard on any error
+        if errors:
+            print(f"[Parallel sentiment] {len(errors)} user(s) failed:", errors)
+
+        return results
 
     def generate_log(self):
         """
@@ -214,7 +263,7 @@ class Platform():
             "total_tokens_output": total_output_tokens,
             "total_tokens_cached": total_cached_tokens,
             "predicted_cost": predicted_cost,
-            "users": self.generate_users_json(),
+            "users": self.generate_users_json_parallel(),
             "posts": self.generate_posts_json(),
             "raw_posts": [post.json() for post in self.raw_posts],
             "user_links": self.user_links,
