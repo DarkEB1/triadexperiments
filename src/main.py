@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
         print(f"Running simulation {i}...")
 
-        run_simulation(simulation_size=7, simulation_steps=2, 
+        run_simulation(simulation_size=10, simulation_steps=1, 
                        user_link_strategy="on_repost_bio", 
                        timeline_select_strategy="other_partisan",
                        show_info=True, run_nr=i)
