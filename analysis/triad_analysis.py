@@ -11,11 +11,11 @@ def analyze_triad(relationships, data) -> List[int]:
     results = [0,0,0] # balanced, unbalanced, incomplete
     for i in range(1, len(data["users"])-1):
         Arelations = data["users"][i-1][relationships]
-        for j in range(i, len(data["users"])):
+        for j in range(i+1, len(data["users"])):
             if Arelations[str(j)] != 0:
                 Brelations = data["users"][j-1][relationships]
                 if Brelations[str(i)] != 0 and Brelations[str(i)] == Arelations[str(j)]:
-                    for k in range(j, len(data["users"])+1):
+                    for k in range(j+1, len(data["users"])+1):
                         if Arelations[str(k)] != 0 and Brelations[str(k)] != 0:
                             Crelations = data["users"][k-1][relationships]
                             if Crelations[str(i)] != 0 and Crelations[str(j)] != 0 and Crelations[str(i)] == Arelations[str(k)] and Crelations[str(j)] == Brelations[str(k)]:
