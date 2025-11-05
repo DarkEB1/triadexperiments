@@ -2,28 +2,19 @@ from typing import List, Dict, Any
 from openai import OpenAI
 import os, json, time, itertools
 from dotenv import load_dotenv
-#TODO IN ORDER, TODO ISNT CATCHING ALL
+#TODO Parallelise
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 JSON_PATH   = "../results/on_repost_bio_other_partisan_info_1.json"
-OUTPUT_PATH = "../results/on_repost_bio_with_relationships.json"
+OUTPUT_PATH = "../results/TBO_users_with_relationships.json"
 
 SYSTEM_MSG = """You are an impartial, terse classifier.
 Your task: Given two users' personas, output EXACTLY ONE TOKEN from this set: -1, 0, 1
 
-Semantics:
--1 = users are ideologically/socially opposed, or likely antagonistic.
-  (e.g., directly conflicting loves/hates; strong opposing partisanship; hostile stances.)
-  Prefer -1 when clear conflict is present.
-  If one user hates a group/person the other loves, that is strong evidence for -1.
-  If partisan scores strongly diverge, that is evidence toward -1.
-
- 0 = unclear, mixed, or insufficient evidence to call alignment vs antagonism.
-   (weak/unknown overlap; not enough signal; contradictory but weak signals.)
-
- 1 = users are aligned or likely friendly.
-   (shared “loveList” items; similar partisan/ideology; compatible issue priorities.)
+Generally, if you would expect the two users to be friendly/agreeable/aligned or generally like each other, output 1.
+If you would expect them to be antagonistic/opposed/hostile or not like each other, output -1.
+Otherwise, if you believe they would be neutral towards each other output 0.
 
 Do not explain. Do not add whitespace. Output only -1 or 0 or 1.
 """
@@ -56,7 +47,7 @@ Return only one of: -1, 0, 1
             resp = client.chat.completions.create(
                 model="gpt-4o-mini",
                 temperature=0,
-                max_tokens=1,  # single token expected
+                max_tokens=2,  
                 messages=[
                     {"role": "system", "content": SYSTEM_MSG},
                     {"role": "user", "content": user_msg},
@@ -65,13 +56,13 @@ Return only one of: -1, 0, 1
             raw = (resp.choices[0].message.content or "").strip()
             if raw in {"-1", "0", "1"}:
                 return int(raw)
-            # Last-chance sanitize
+        
             for tok in ("-1", "0", "1"):
                 if tok in raw:
                     return int(tok)
         except Exception:
             if attempt == max_retries:
-                return 0  # neutral fallback on persistent failure
+                return 0  
             time.sleep(sleep_s * attempt)
 
     return 0
@@ -84,11 +75,10 @@ def compute_and_attach_relationships(data: Dict[str, Any]) -> Dict[str, Any]:
     users: List[Dict[str, Any]] = data["users"]
     n = len(users)
 
-    # Ensure each user has a relationships dict
+
     for u in users:
         u.setdefault("relationships_expected", {})
-
-    # Self-relationship convention: 1
+   
     for u in users:
         u["relationships_expected"][u["identifier"]] = 1
         u["relationships"][u["identifier"]] = 1
