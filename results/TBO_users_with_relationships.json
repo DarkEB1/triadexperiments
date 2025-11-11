@@ -67,7 +67,7 @@
         "gunsOwned": 0,
         "biography": "Divorced data nerd (38) in WA. Strong Dem. Fitness addict, gardener, DIY queen. Love science, hate Trump & the NRA. #MeToo advocate."
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "1": 1,
         "5": -1,
         "3": 1,
@@ -129,7 +129,7 @@
         "gunsOwned": 0,
         "biography": "76, retired teacher from OK, loving husband, classic car junkie, fishing & gardening guy. Strong conservative, proud Republican!"
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "5": 1,
         "1": -1,
         "3": -1,
@@ -195,7 +195,7 @@
         "gunsOwned": 0,
         "biography": "38, proud Black gay guy from MD. Social media whiz, gamer, cook, and movie buff. Here for BLM, trans rights, and some real change!"
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "3": 1,
         "1": 1,
         "5": -1,
@@ -260,13 +260,13 @@
         "gunsOwned": 3,
         "biography": "Sales rep by day, guitar strummer by night. Married life in NC, love gardening & cooking. Big fan of unity and the blue line."
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "7": 1,
         "1": -1,
         "5": 0,
         "3": -1,
         "4": -1,
-        "8": 0,
+        "8": -1,
         "2": -1,
         "6": -1
       }
@@ -327,7 +327,7 @@
         "gunsOwned": 0,
         "biography": "Retired teacher, knitting queen, bird watcher. Proud Michigander. Big love for Biden & BLM. Let’s make health care a right!"
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "4": 1,
         "1": 1,
         "5": -1,
@@ -389,15 +389,15 @@
         "gunsOwned": 0,
         "biography": "Texan widow, part-time bookkeeper, conservative grandma. Passionate about gardening, cooking, and reading. Strong believer in health and freedom!"
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "8": 1,
         "1": -1,
         "5": 1,
         "3": -1,
-        "7": 0,
+        "7": -1,
         "4": -1,
         "2": -1,
-        "6": -1
+        "6": 1
       }
     },
     {
@@ -456,7 +456,7 @@
         "gunsOwned": 0,
         "biography": "Midwest guy, 32, data cruncher. Hiking, cooking, photography nerd. Biden fan, healthcare advocate, anti-Trump. Let’s fix the world!"
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "2": 1,
         "1": 1,
         "5": -1,
@@ -536,14 +536,14 @@
         "gunsOwned": 0,
         "biography": "33, construction guy in FL. Proud conservative. Love my Trump, my faith, and DIY projects. Gamer & local history buff. Keep it real!"
       },
-      "relationships_expected": {
+      "relationships_expected_pre": {
         "6": 1,
         "1": -1,
         "5": 1,
         "3": -1,
         "7": -1,
         "4": -1,
-        "8": -1,
+        "8": 1,
         "2": -1
       }
     }

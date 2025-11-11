@@ -37,17 +37,26 @@ def analyze_triad(relationships, data) -> List[int]:
 def main():
     
     data = load_data(INPUT_PATH)
-    expected = analyze_triad("relationships_expected", data)
-    actual = analyze_triad("relationships", data)
+    expected_post = analyze_triad("relationships_expected_post", data)
+    expected_pre = analyze_triad("relationships_expected_pre", data)
+    actual_post = analyze_triad("relationships_post", data)
+    actual_pre = analyze_triad("relationships_pre", data)
 
+    print(f"Balanced triads expected pre: {expected_pre[0]}")
+    print(f"Unbalanced triads expected pre: {expected_pre[1]}")
+    print(f"Incomplete triads expected pre: {expected_pre[2]}")
 
-    print(f"Balanced triads expected: {expected[0]}")
-    print(f"Unbalanced triads expected: {expected[1]}")
-    print(f"Incomplete triads expected: {expected[2]}")
+    print(f"Balanced triads expected post: {expected_post[0]}")
+    print(f"Unbalanced triads expected post: {expected_post[1]}")
+    print(f"Incomplete triads expected post: {expected_post[2]}")
 
-    print(f"Balanced triads actual: {actual[0]}")
-    print(f"Unbalanced triads actual: {actual[1]}")
-    print(f"Incomplete triads actual: {actual[2]}")
+    print(f"Balanced triads actual pre: {actual_pre[0]}")
+    print(f"Unbalanced triads actual pre: {actual_pre[1]}")
+    print(f"Incomplete triads actual pre: {actual_pre[2]}")
+
+    print(f"Balanced triads actual post: {actual_post[0]}")
+    print(f"Unbalanced triads actual post: {actual_post[1]}")
+    print(f"Incomplete triads actual post: {actual_post[2]}")
 
 if __name__ == "__main__":
     main()

@@ -77,18 +77,18 @@ def compute_and_attach_relationships(data: Dict[str, Any]) -> Dict[str, Any]:
 
 
     for u in users:
-        u.setdefault("relationships_expected", {})
+        u.setdefault("relationships_expected_pre_post", {})
    
     for u in users:
-        u["relationships_expected"][u["identifier"]] = 1
+        u["relationships_expected_pre"][u["identifier"]] = 1
         u["relationships"][u["identifier"]] = 1
 
     # Compute for each unordered pair once, mirror both directions
     for i, j in itertools.combinations(range(n), 2):
         ui, uj = users[i], users[j]
         label = judge_relationship_llm(ui, uj)
-        ui["relationships_expected"][uj["identifier"]] = label
-        uj["relationships_expected"][ui["identifier"]] = label
+        ui["relationships_expected_pre"][uj["identifier"]] = label
+        uj["relationships_expected_pre"][ui["identifier"]] = label
 
     return data
 
