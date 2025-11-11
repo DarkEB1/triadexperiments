@@ -213,6 +213,7 @@ class Platform():
             # Optional: give each worker its own client to avoid any thread-safety doubts
             if u.llm is None:
                 u.set_client(OpenAI())
+            u.generate_relationships(platform=self, platform_users=platform_users, post=False)
             u.generate_relationships(platform=self, platform_users=platform_users)
             return u.json(include_persona=True)
 
@@ -235,7 +236,8 @@ class Platform():
                         "used_tokens_input": 0,
                         "used_tokens_output": 0,
                         "used_tokens_cached": 0,
-                        "relationships": {},
+                        "relationships_pre": {},
+                        "relationships_post": {},
                         "error": str(e),
                     })
 

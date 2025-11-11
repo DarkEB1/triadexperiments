@@ -37,6 +37,7 @@ class Agent:
         self.identifier = 0
         self.followers = 0
         self.relationships = {}  # key: user_id, value: sentiment (1, 0, -1)
+        self.relationships_pre = {}  # key: user_id, value: sentiment (1, 0, -1)
 
         self.used_tokens_input = 0
         self.used_tokens_output = 0
@@ -110,7 +111,8 @@ class Agent:
             "used_tokens_input": self.used_tokens_input,
             "used_tokens_output": self.used_tokens_output,
             "used_tokens_cached": self.used_tokens_cached,
-            "relationships": {str(k): v for k, v in self.relationships.items()}
+            "relationships_pre": {str(k): v for k, v in self.relationships_pre.items()},
+            "relationships_post": {str(k): v for k, v in self.relationships.items()}
         }
 
         if include_persona:
@@ -219,7 +221,7 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
         return True if response.choice.lower() == 'yes' else False, response.explanation
 
     def triad_determination(self, other_agent: 'Agent', other_agent_posts: list, use_bio: bool = True,
-                            use_follower_count: bool = False) -> int:
+                            use_follower_count: bool = False, post: bool = True) -> int:
         """
         Supply the bio of another agent and let the user decide sentiment.
         """
@@ -234,9 +236,10 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
         if use_bio:
             msg += f"Bio: {other_agent.persona['biography']}\n"
 
-        msg += "\nRecent posts or reposts:\n\n"
-        for post in other_agent_posts[:5]:
-            msg += f"{post['post_content']}\n\n"
+        if post == True:
+            msg += "\nRecent posts or reposts:\n\n"
+            for post in other_agent_posts[:5]:
+                msg += f"{post['post_content']}\n\n"
 
         msg += (
             "Based on your beliefs, interests, and personality, decide your sentiment "
@@ -252,7 +255,7 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
         print(response)
         return int(response.value)
 
-    def generate_relationships(self, platform: Platform, platform_users: list) -> None:
+    def generate_relationships(self, platform: Platform, platform_users: list, post: bool) -> None:
         """
         Generate relationships with other users on the platform.
         """
@@ -261,8 +264,16 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
             if other_agent.identifier == self.identifier:
                 continue
 
-            if platform.has_link(self.identifier, other_agent.identifier):
+            if platform.has_link(self.identifier, other_agent.identifier) and post == True:
                 sentiment = 1
+            elif post == False:
+                sentiment = self.triad_determination(
+                    other_agent,
+                    platform.get_posts_of_user(other_agent.identifier),
+                    use_bio=True,
+                    use_follower_count=False,
+                    post=False
+                )
             else:
                 sentiment = self.triad_determination(
                     other_agent,
@@ -270,8 +281,10 @@ Reply with 'yes' or 'no'. Also provide a short explanation for your choice."""
                     use_bio=True,
                     use_follower_count=False
                 )
-
-            self.relationships[other_agent.identifier] = sentiment
+            if post == True:
+                self.relationships[other_agent.identifier] = sentiment
+            else:
+                self.relationships_pre[other_agent.identifier] = sentiment
 
     def perform_action(self, news_data: list, timeline: list) -> Action:
         """
